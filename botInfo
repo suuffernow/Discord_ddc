@@ -1,0 +1,24 @@
+Discord - DDC aka Dungeon Dwellers Cup on Discord
+
+Currently in **Alpha** stage
+Bot is hosted on private PC so might go offline often
+
+Explore depths of a Dungeon
+Defeat enemies
+Meet and defeat bosses on every 5th floor
+Get rewards:
+ * experience points
+ * skill points (for defeating bosses)
+ * items (for defeating bosses)
+
+ Use experience and skill points level up abilities and gain more power.
+ * Attack - increases damage done  
+ * HP - increases health pool
+ * Dexterity - increases change to deal higher damage and receive lower damage
+ * Speed - increases chance to surprise enemy and deal first strike
+
+ Each ability upgrade purchased with experience increases flat value of the ability
+ Each ability upgrade purchased with skill points increases value of an ability by 1%
+
+ Items dropped by bosses are randomized. There is no guarantee to receive best available item.
+ Maybe it is worth to kill bosses a few times??
