@@ -133,15 +133,18 @@ class explor(commands.Cog):
                     new_exp = player_stats[5] + level
                     new_skills = player_stats[14] + 1
                     emoji = "<:zrage:1412527734650830908>"
+                    level_update = level
+                    if level_update < player_stats[4]:
+                        level_update = player_stats[4]
                     if level % 5 == 0:
                         print(f"{ctx.author.name} - explore - boss kill acknowledged")
-                        cur.execute("UPDATE ddc_player SET exp = {}, exploration = {}, skill_points = {} WHERE player_id= {}".format(new_exp, level, new_skills, ctx.author.id))
+                        cur.execute("UPDATE ddc_player SET exp = {}, exploration = {}, skill_points = {} WHERE player_id= {}".format(new_exp, level_update, new_skills, ctx.author.id))
 
                         return "Pass", f"{ctx.author.name}\n{emoji}{emoji}{emoji}{emoji} Level {level} has been cleared! You have obtained {level} exp and a Skill Point for defeating a boss!!", oponent_name
 
                     else:
                         print(f"{ctx.author.name} - explore - trash moob kill acknowledged")
-                        cur.execute("UPDATE ddc_player SET exp = {}, exploration = {} WHERE player_id= {}".format(new_exp,level,ctx.author.id))
+                        cur.execute("UPDATE ddc_player SET exp = {}, exploration = {} WHERE player_id= {}".format(new_exp,level_update,ctx.author.id))
 
                         return "Pass", f"{ctx.author.name}\n{emoji}{emoji} Level {level} has been cleared! You have obtained {level} exp!", oponent_name
                 else:
