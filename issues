@@ -1,0 +1,60 @@
+CSV seem to be fully overwritten with every single edit
+
+brainrot solution - generate CSV for every user
+
+Do i need SQL integration??
+    1. list of active users and their actions
+    2. for each user
+        a. table with statistics
+        b. table with equipment
+        a+b possible in single table
+    ---------------
+    3. skill stats - static value can be csv
+    4. floor boss stats - static value can be csv
+    5. loot table - static value can be csv
+
+✅solved: each user will be separate csv
+❌update: code rewritten to database
+#############################################################
+
+multi skill upgrade
+get cost of all upgrades
+    loop current skill level + required upgrade
+
+    break when cost is too high
+    message how many levels can be upgraded
+    ask for emoji confirmation
+
+✅ DONE
+##############################################################
+
+Move all CSVs to database
+
+equipment and skill multipliers
+	should they be in separate table or in character sheet
+	character sheet will have ~49 columns
+	with separate tables will have to import 3 - 7 tables for explo
+
+✅ solved: added everything to a single table
+##############################################################
+fix equipment drop display
+put name of the item above the table
+have table with 4 columns
+
+✅ DONE
+##############################################################
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+exploring lower level updates DB with low level exploration
+NEED FIX ASAP
+
+##############################################################
+
+killing same boss multiple times will give skill points each time
+might need to be changed
+
+##############################################################
+inventory list for not used EQ
+
+shop to sell old eq
+
+shop with rotating items

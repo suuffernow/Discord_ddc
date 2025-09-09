@@ -1,0 +1,47 @@
+No class selection
+Every boss kill select upgrade to stats +1% to selected stat
+
+Item drops
+    -weapon
+    -armor
+    -pants
+    -gloves
+    -boots
+Items drop only from boss kills
+Each boss kll guaranteed a random item with random stat
+Items give flat stat based on boss level * random modifier
+
+
+COMMANDS:
+✅✅    create - create new character
+✅✅    daily - daily login - gain actions
+✅✅    stats - preview stats + equipment (add variable for other players)
+✅✅    levelup - levelup stats using XP
+✅✅    reactionwait - wait for player's reaction
+✅✅    skillup - skillup stat using skill point obtained for boss kills
+    skillReset - resets all skill points
+    levelRest - resets all level ups
+✅✅    explore() - explore level
+✅✅        MAX - for highest unlocked - DEFAULT VALUE
+✅✅        int() - for lower
+✅✅        dropsystem
+✅✅	    randomized dmg value - +/- 50% depending on dex difference + random(1000)
+    farm(x)(y) - farm (x) level (y) times - cannot farm boss levels due to drops
+    leaderboards - show top10 players
+    commandlist - list of available commands
+ ✅✅   DB - add history of combat results
+
+    inventory - create DB + commands to store not equipped items
+        inventory
+        equip
+        sell
+
+
+    !!!replace player stats table - duplicated values for early skill levels
+
+STATS:
+    EXP - xp to spend on leveling up skills
+    ATK - scales dmg
+    HP - scales hp
+    DEX - scales crit chance and avd
+    SPD - scales first strike chance
