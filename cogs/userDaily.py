@@ -1,7 +1,10 @@
 from discord.ext import commands
-import psycopg2
+import psycopg2, os
 from datetime import date
 import userExistCheck, messageSend
+from dotenv import load_dotenv
+load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 class userdaily(commands.Cog):
     def __init__(self, bot):
@@ -27,7 +30,7 @@ class userdaily(commands.Cog):
 async def dbupdate(ctx):
     try:
         print(f"{ctx.author.name} - daily - log into database")
-        with psycopg2.connect(dbname="Discord_DDC", user="postgres", password="1234") as conn:
+        with psycopg2.connect(DATABASE_URL) as conn:
             with conn.cursor() as cur:
                 #get current user data
                 print(f"{ctx.author.name} - daily - pull data from database")

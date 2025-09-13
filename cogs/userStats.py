@@ -1,7 +1,11 @@
 from table2ascii import table2ascii as t2a, PresetStyle, Merge, Alignment
 from discord.ext import commands
-import psycopg2, discord
+import psycopg2, discord, os
 import userExistCheck, messageSend
+from dotenv import load_dotenv
+load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
+
 
 class userstats(commands.Cog):
     def __init__(self, bot):
@@ -34,7 +38,7 @@ async def getdata(player_id, player):
     try:
         print(f"XX - profile - log into database")
         # pull data for the user
-        with psycopg2.connect(dbname="Discord_DDC", user="postgres", password="1234") as conn:
+        with psycopg2.connect(DATABASE_URL) as conn:
             with conn.cursor() as cur:
                 print(f"XX - profile - pull data for {player}")
                 cur.execute("SELECT * FROM ddc_player WHERE player_id = %s", [player_id])

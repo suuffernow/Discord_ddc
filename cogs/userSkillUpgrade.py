@@ -1,7 +1,10 @@
-import psycopg2
+import psycopg2, os
 from discord import app_commands
 from discord.ext import commands
 import userExistCheck, messageSend
+from dotenv import load_dotenv
+load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 class userskillup(commands.Cog):
     def __init__(self, bot):
@@ -31,7 +34,7 @@ class userskillup(commands.Cog):
 
     async def skillup(self, ctx, skill, level):
         print(f"{ctx.author.name} - skillup - log into database")
-        with psycopg2.connect(dbname="Discord_DDC", user="postgres", password="1234") as conn:
+        with psycopg2.connect(DATABASE_URL) as conn:
             with conn.cursor() as cur:
                 # get characters statistics, exp and skill level
                 print(f"{ctx.author.name} - skillup - get user stats")

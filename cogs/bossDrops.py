@@ -1,7 +1,12 @@
+import os
+
 import psycopg2, random
 from discord.ext import commands
 from table2ascii import table2ascii as t2a, PresetStyle, Merge, Alignment
 import messageSend
+from dotenv import load_dotenv
+load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 
 class bossdrops(commands.Cog):
@@ -15,7 +20,7 @@ class bossdrops(commands.Cog):
         print(f"{ctx.author.name} - drops - drop selected: {eq}")
         drop_range = 0
         print(f"{ctx.author.name} - drops - opening drop table - {eq}")
-        with psycopg2.connect(dbname="Discord_DDC", user="postgres", password="1234") as conn:
+        with psycopg2.connect(DATABASE_URL) as conn:
             with conn.cursor() as cur:
                 # find all eq below current level
                 print(f"{ctx.author.name} - drops - {eq} - find while list of drops")

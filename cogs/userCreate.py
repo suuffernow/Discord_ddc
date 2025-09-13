@@ -1,7 +1,10 @@
 from discord.ext import commands
-import psycopg2
+import psycopg2, os
 from datetime import date
 import userExistCheck, messageSend
+from dotenv import load_dotenv
+load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 class usercreate(commands.Cog):
     def __init__(self, bot):
@@ -36,7 +39,7 @@ async def dbinsert(ctx):
     try:
         #insert new line to the DB
         print(f"{ctx.author.name} - create - log into database")
-        with psycopg2.connect(dbname="Discord_DDC", user="postgres", password="1234") as conn:
+        with psycopg2.connect(DATABASE_URL) as conn:
             with conn.cursor() as cur:
                 print(f"{ctx.author.name} - create - adding user to database")
                 cur.execute("INSERT INTO ddc_player (player_id, player_name, date, action) VALUES (%s, %s,%s, %s)",

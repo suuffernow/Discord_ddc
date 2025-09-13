@@ -1,8 +1,11 @@
-import random, psycopg2, asyncio
+import random, psycopg2, asyncio, os
 from discord.ext import commands
 from combat import fighter, combat
 import userExistCheck, messageSend
 from explor_history import explor_history
+from dotenv import load_dotenv
+load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 
 class explor(commands.Cog):
@@ -19,7 +22,7 @@ class explor(commands.Cog):
             print(f"{ctx.author.name} - explore - user found")
             if level is None:
                 print(f"{ctx.author.name} - explore - define max explore level")
-                with psycopg2.connect(dbname="Discord_DDC", user="postgres", password="1234") as conn:
+                with psycopg2.connect(DATABASE_URL) as conn:
                     with conn.cursor() as cur:
                         cur.execute("SELECT exploration FROM ddc_player WHERE player_id = %s", [ctx.author.id])
                         result = cur.fetchone()
@@ -45,7 +48,7 @@ class explor(commands.Cog):
 
     async def explorelevel(self, ctx, level):
         print(f"{ctx.author.name} - explore - log into database")
-        with psycopg2.connect(dbname="Discord_DDC", user="postgres", password="1234") as conn:
+        with psycopg2.connect(DATABASE_URL) as conn:
             with conn.cursor() as cur:
                 # define player stats and stats multipliers for skill + equipment
                 print(f"{ctx.author.name} - explore - get user data + equipment")
