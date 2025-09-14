@@ -64,7 +64,7 @@ async def getdata(player_id, player):
                         [f"+ {stats[30]}%", f"+ {stats[31]}%", f"+ {stats[32]}%",f"+ {stats[33]}%"],
                         ["gloves: "+stats[34], Merge.LEFT, Merge.LEFT, Merge.LEFT],
                         [f"+ {stats[35]}%", f"+ {stats[36]}%", f"+ {stats[37]}%",f"+ {stats[38]}%"],
-                        ["boots"+stats[39], Merge.LEFT, Merge.LEFT, Merge.LEFT],
+                        ["boots: "+stats[39], Merge.LEFT, Merge.LEFT, Merge.LEFT],
                         [f"+ {stats[40]}%", f"+ {stats[41]}%", f"+ {stats[42]}%", f"+ {stats[43]}%"]
                     ],
                     column_widths=[12, 12, 12, 12],
@@ -79,4 +79,5 @@ async def getdata(player_id, player):
         print(error)
 
 async def setup(bot):
+
     await bot.add_cog(userstats(bot))
