@@ -93,24 +93,19 @@ class bossdrops(commands.Cog):
                     print(f"{ctx.author.name} - exploration - equip new item")
                     if eq == "eq_weapon":
                         cur.execute(
-                            "UPDATE ddc_player SET weapon_name = %s, atk_weapon = %s, hp_weapon = %s, dex_weapon = %s, spd_weapon = %s WHERE player_id = %s",
-                            (eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
+                            "UPDATE ddc_player SET weapon_name = %s, atk_weapon = %s, hp_weapon = %s, dex_weapon = %s, spd_weapon = %s WHERE player_id = %s",(eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
                     elif eq == "eq_armor":
                         cur.execute(
-                            "UPDATE ddc_player SET armor_name = %s, atk_armor = %s, hp_armor = %s, dex_armor = %s, spd_armor = %s WHERE player_id = %s",
-                            (eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
+                            "UPDATE ddc_player SET armor_name = %s, atk_armor = %s, hp_armor = %s, dex_armor = %s, spd_armor = %s WHERE player_id = %s",(eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
                     elif eq == "eq_pants":
                         cur.execute(
-                            "UPDATE ddc_player SET pants_name = %s, atk_pants = %s, hp_pants = %s, dex_pants = %s, spd_pants = %s WHERE player_id = %s",
-                            (eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
+                            "UPDATE ddc_player SET pants_name = %s, atk_pants = %s, hp_pants = %s, dex_pants = %s, spd_pants = %s WHERE player_id = %s",(eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
                     elif eq == "eq_gloves":
                         cur.execute(
-                            "UPDATE ddc_player SET gloves_name = %s, atk_gloves = %s, hp_gloves = %s, dex_gloves = %s, spd_gloves = %s WHERE player_id = %s",
-                            (eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
+                            "UPDATE ddc_player SET gloves_name = %s, atk_gloves = %s, hp_gloves = %s, dex_gloves = %s, spd_gloves = %s WHERE player_id = %s",(eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
                     elif eq == "eq_boots":
                         cur.execute(
-                            "UPDATE ddc_player SET boots_name = %s, atk_boots = %s, hp_boots = %s, dex_boots = %s, spd_boots = %s WHERE player_id = %s",
-                            (eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
+                            "UPDATE ddc_player SET boots_name = %s, atk_boots = %s, hp_boots = %s, dex_boots = %s, spd_boots = %s WHERE player_id = %s",(eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
 
                     emoji = "<:angle:1412540828701823007>"
                     result = ["Pass",f"✅ {emoji} you have equipped your new item!"]
