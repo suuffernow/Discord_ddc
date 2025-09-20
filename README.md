@@ -24,7 +24,7 @@ Each ability upgrade purchased with skill points increases value of an ability b
 
 Items dropped by bosses are randomized. There is no guarantee to receive best available item.
 
-################################################################################################
+####################################################################
 
 List of slash commands:
 
