@@ -7,6 +7,7 @@ Item drops
     -pants
     -gloves
     -boots
+    -earrings
 Items drop only from boss kills
 Each boss kll guaranteed a random item with random stat
 Items give flat stat based on boss level * random modifier
@@ -19,25 +20,33 @@ COMMANDS:
 ✅✅    levelup - levelup stats using XP
 ✅✅    reactionwait - wait for player's reaction
 ✅✅    skillup - skillup stat using skill point obtained for boss kills
-    skillReset - resets all skill points
-    levelRest - resets all level ups
+✅✅    skillReset - resets all skill points
+✅✅    levelRest - resets all level ups
 ✅✅    explore() - explore level
 ✅✅        MAX - for highest unlocked - DEFAULT VALUE
 ✅✅        int() - for lower
 ✅✅        dropsystem
 ✅✅	    randomized dmg value - +/- 50% depending on dex difference + random(1000)
-    farm(x)(y) - farm (x) level (y) times - cannot farm boss levels due to drops
-    leaderboards - show top10 players
-    commandlist - list of available commands
- ✅✅   DB - add history of combat results
+✅✅    farm(x)(y) - farm (x) level (y) times - cannot farm boss levels due to drops
+✅✅    leaderboards - show top10 players
+✅✅   commandlist - list of available commands
+✅✅   botinfo - post info about the bot
+✅✅   DB - add history of combat results
 
     inventory - create DB + commands to store not equipped items
         inventory
         equip
         sell
+    item trade???
+    
+    shop to spend XP for items??
+	rotate shop for each player once a day (store date if date is different generate new item list based on player level)
+
+    duels between players???
 
 
-    !!!replace player stats table - duplicated values for early skill levels
+
+    !!!replace player_stats table - duplicated values for early skill levels
 
 STATS:
     EXP - xp to spend on leveling up skills

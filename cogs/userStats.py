@@ -49,35 +49,38 @@ async def getdata(player_id, player):
                 statsUser = (
                     f"{player}\nExplored up to floor: {stats[4]} -=- Actions available: {stats[3]}\nEXP available: {stats[5]} -=- Skill points available: {stats[14]}")
                 statsTable = t2a(
-                    header=["ATK", "HP", "DEX", "SPD"],
                     body=[
-                        ["levelUp", Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        [stats[6], stats[7], stats[8], stats[9]],
-                        ["skillUp", Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        [f"+ {stats[15]}%", f"+ {stats[16]}%", f"+ {stats[17]}%", f"+ {stats[18]}%"],
-                        [" ", Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        ["weapon: "+stats[19],Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        [f"+ {stats[20]}%", f"+ {stats[21]}%", f"+ {stats[22]}%",f"+ {stats[23]}%"],
-                        ["armor: "+stats[24], Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        [f"+ {stats[25]}%", f"+ {stats[26]}%", f"+ {stats[27]}%",f"+ {stats[28]}%"],
-                        ["pants: "+stats[29], Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        [f"+ {stats[30]}%", f"+ {stats[31]}%", f"+ {stats[32]}%",f"+ {stats[33]}%"],
-                        ["gloves: "+stats[34], Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        [f"+ {stats[35]}%", f"+ {stats[36]}%", f"+ {stats[37]}%",f"+ {stats[38]}%"],
-                        ["boots: "+stats[39], Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                        [f"+ {stats[40]}%", f"+ {stats[41]}%", f"+ {stats[42]}%", f"+ {stats[43]}%"]
+                        ["", "levelUp", "skillUp"],
+                        ["ATK",f"lv {stats[6]}",f"+ {stats[15]}%"],
+                        ["HP", f"lv {stats[7]}", f"+ {stats[16]}%"],
+                        ["DEX", f"lv {stats[8]}", f"+ {stats[17]}%"],
+                        ["SPD", f"lv {stats[9]}", f"+ {stats[18]}%"]
                     ],
-                    column_widths=[12, 12, 12, 12],
-                    alignments=[Alignment.CENTER, Alignment.CENTER, Alignment.CENTER, Alignment.CENTER],
+                    alignments=[Alignment.CENTER, Alignment.CENTER, Alignment.CENTER],
+                    style=PresetStyle.double_thin_box)
+                statsEQ = t2a(
+                    body=[
+                        ["", "Weapon", "Earring", "Armor"],
+                        ["ATK", f"+ {stats[20]}%", f"+ %",f"+ {stats[25]}%"],
+                        ["HP", f"+ {stats[21]}%", f"+ %",f"+ {stats[26]}%"],
+                        ["DEX", f"+ {stats[22]}%", f"+ %",f"+ {stats[27]}%"],
+                        ["SPD", f"+ {stats[23]}%", f"+ %",f"+ {stats[28]}%"],
+                        ["", Merge.LEFT, Merge.LEFT, Merge.LEFT],
+                        ["", "Pants", "Gloves", "Boots"],
+                        ["ATK", f"+ {stats[30]}%", f"+ {stats[35]}%", f"+ {stats[40]}%"],
+                        ["HP", f"+ {stats[31]}%", f"+ {stats[36]}%", f"+ {stats[41]}%"],
+                        ["DEX", f"+ {stats[32]}%", f"+ {stats[37]}%", f"+ {stats[42]}%"],
+                        ["SPD", f"+ {stats[33]}%", f"+ {stats[38]}%", f"+ {stats[43]}%"],
+                    ],
+                    alignments=[Alignment.CENTER, Alignment.CENTER, Alignment.CENTER,Alignment.CENTER],
                     style=PresetStyle.double_thin_box)
 
                 print(f"XX - profile - post stats table for {player}")
-                message = (f"{statsUser}\n\n{statsTable}")
+                message = (f"{statsUser}\n\n{statsTable}\n\n{statsEQ}")
                 return "Info", f"```\n{message}\n```"
 
     except (Exception, psycopg2.Error) as error:
         print(error)
 
 async def setup(bot):
-
     await bot.add_cog(userstats(bot))

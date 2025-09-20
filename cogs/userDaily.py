@@ -39,7 +39,7 @@ async def dbupdate(ctx):
                 #compare date in player sheet and current date
                 print(f"{ctx.author.name} - daily - check if command was used today")
                 if result[2] < date.today():
-                    action = result[3] + 20
+                    action = result[3] + 10
                     print(f"{ctx.author.name} - daily - command not used yet - update database")
                     cur.execute("UPDATE ddc_player SET action = %s, date = %s where player_id = %s",
                                 [action, date.today(), ctx.author.id])

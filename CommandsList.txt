@@ -1,22 +1,20 @@
-Available commands (✅ - ready | ❌ - to be done):
-
 ✅ /create - create new character
 ✅ /daily - daily login - gain actions
 ✅ /profile - preview stats + equipment (can preview other users)
+✅ /top10 - show top10 players
 
 ✅ /levelup <skill> <level> - levels up a skill using experience
 ✅ /skillup <skill> <level> - upgrades skill by 1%
         chose skill from available list
         level up multiple times in a single command (leaving level not selected will level up once)
 
-❌ /skillReset - resets all skill points
-❌ /levelRest - resets all level ups
+✅ /skillReset - resets all skill points
+✅ /levelRest - resets all level ups
 
 ✅ /explore <level> - explore the dungeon and fight enemy
         leaving level not selected will explore next available dungeon level
-
-❌ /farm <level> <x> - repeats a fight on a specified level X times
+✅ /farm <level> <x> - repeats a fight on a specified level X times
         (cannot farm boss levels)
 
-❌ /top10 - show top10 players
 ✅ /commandlist - available commands
+✅ /botinfo - post information about the bot

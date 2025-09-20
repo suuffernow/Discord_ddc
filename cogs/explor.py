@@ -18,7 +18,6 @@ class explor(commands.Cog):
         # check if user already exist
         print(f"{ctx.author.name} - explore - check if user exists")
         if userExistCheck.userExist(ctx.author.id) == "found":
-            # trigger function to add new user
             print(f"{ctx.author.name} - explore - user found")
             if level is None:
                 print(f"{ctx.author.name} - explore - define max explore level")
@@ -75,13 +74,13 @@ class explor(commands.Cog):
                 # assign stats * their multiplier
                 print(f"{ctx.author.name} - explore - calculate player stats")
                 player_atk = player_stats[10] + player_stats[10] * ((player_stats[15] + player_stats[20] + player_stats[
-                    25] + player_stats[30] + player_stats[35] + player_stats[40]) / 100)
+                    25] + player_stats[30] + player_stats[35] + player_stats[40] + player_stats[45]) / 100)
                 player_hp = player_stats[11] + player_stats[11] * ((player_stats[16] + player_stats[21] + player_stats[
-                    26] + player_stats[31] + player_stats[36] + player_stats[41]) / 100)
+                    26] + player_stats[31] + player_stats[36] + player_stats[41] + player_stats[46]) / 100)
                 player_dex = player_stats[12] + player_stats[12] * ((player_stats[17] + player_stats[22] + player_stats[
-                    27] + player_stats[32] + player_stats[37] + player_stats[42]) / 100)
+                    27] + player_stats[32] + player_stats[37] + player_stats[42] + player_stats[47]) / 100)
                 player_spd = player_stats[13] + player_stats[13] * ((player_stats[18] + player_stats[23] + player_stats[
-                    28] + player_stats[33] + player_stats[38] + player_stats[43]) / 100)
+                    28] + player_stats[33] + player_stats[38] + player_stats[43] + player_stats[48]) / 100)
 
                 # define oponent stats
                 print(f"{ctx.author.name} - explore - calculate enemy stats")
@@ -139,7 +138,7 @@ class explor(commands.Cog):
                     level_update = level
                     if level_update < player_stats[4]:
                         level_update = player_stats[4]
-                    if level % 5 == 0:
+                    if level % 5 == 0 and level > player_stats[4]:
                         print(f"{ctx.author.name} - explore - boss kill acknowledged")
                         cur.execute("UPDATE ddc_player SET exp = {}, exploration = {}, skill_points = {} WHERE player_id= {}".format(new_exp, level_update, new_skills, ctx.author.id))
 

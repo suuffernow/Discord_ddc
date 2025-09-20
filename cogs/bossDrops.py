@@ -2,7 +2,7 @@ import os
 
 import psycopg2, random
 from discord.ext import commands
-from table2ascii import table2ascii as t2a, PresetStyle, Merge, Alignment
+from table2ascii import table2ascii as t2a, PresetStyle, Alignment
 import messageSend
 from dotenv import load_dotenv
 load_dotenv()
@@ -15,9 +15,11 @@ class bossdrops(commands.Cog):
 
     async def drops(self, level, ctx):
         print(f"{ctx.author.name} - drops - define drop category")
-        drop_options = ("eq_weapon", "eq_armor", "eq_pants", "eq_gloves", "eq_boots")
+
+        drop_options = ("eq_weapon", "eq_armor", "eq_pants", "eq_gloves", "eq_boots", "eq_earring")
         eq = random.choice(drop_options)  # randomize equipment slot
         print(f"{ctx.author.name} - drops - drop selected: {eq}")
+
         drop_range = 0
         print(f"{ctx.author.name} - drops - opening drop table - {eq}")
         with psycopg2.connect(DATABASE_URL) as conn:
@@ -61,30 +63,25 @@ class bossdrops(commands.Cog):
                     dropped_item = "boots"
                     for i in range(39, 44):
                         player_eq.append(player_stats[i])
+                elif eq == "eq_earring":
+                    dropped_item = "earring"
+                    for i in range(34, 49):
+                        player_eq.append(player_stats[i])
 
                 print(f"{ctx.author.name} - drops - create table with player EQ")
-                currentEQ = t2a(
-                    header=["ATK", "HP", "DEX", "SPD"],
-                    body=[[player_eq[0], Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                          [player_eq[1], player_eq[2], player_eq[3], player_eq[4]]
-                          ],
-                    column_widths=[12, 12, 12, 12],
-                    alignments=[Alignment.CENTER, Alignment.CENTER, Alignment.CENTER, Alignment.CENTER],
-                    style=PresetStyle.thin_compact)
-
-                print(f"{ctx.author.name} - drops - create table with dropped EQ")
                 dropEQ = t2a(
-                    header=["ATK", "HP", "DEX", "SPD"],
-                    body= [[eq_reward[1], Merge.LEFT, Merge.LEFT, Merge.LEFT],
-                           [eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5]]
-                           ],
-                    column_widths=[12, 12, 12, 12],
-                    alignments=[Alignment.CENTER, Alignment.CENTER, Alignment.CENTER, Alignment.CENTER],
+                    header=[f"{dropped_item}", "CURRENT", "NEW"],
+                    body=[["ATK", f"{player_eq[1]}", f"{eq_reward[2]}"],
+                          ["HP", f"{player_eq[2]}", f"{eq_reward[3]}"],
+                          ["DEX", f"{player_eq[3]}", f"{eq_reward[4]}"],
+                          ["SPD", f"{player_eq[4]}", f"{eq_reward[5]}"]
+                          ],
+                    alignments=[Alignment.CENTER, Alignment.CENTER, Alignment.CENTER],
                     style=PresetStyle.thin_compact)
-
+                print(f"{dropEQ}")
                 print(f"{ctx.author.name} - drops - ask to equip item")
                 emoji = "<:owo:1412549557903949966>"
-                message = f"{emoji} What is this??\nYou found **{dropped_item}** under the boss. Would you like to equip it\n\nCURRENTLY EQUIPPED:```\n{currentEQ}\n```FOUND NEW```\n{dropEQ}\n```"
+                message = f"{emoji} What is this??\nYou found **{dropped_item}** under the boss. Would you like to equip it\n\n```\n{dropEQ}\n```"
 
                 from cogs.reactionWait import reactionwait
                 ask = reactionwait(bot=self.bot)
@@ -106,6 +103,9 @@ class bossdrops(commands.Cog):
                     elif eq == "eq_boots":
                         cur.execute(
                             "UPDATE ddc_player SET boots_name = %s, atk_boots = %s, hp_boots = %s, dex_boots = %s, spd_boots = %s WHERE player_id = %s",(eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
+                    elif eq == "eq_earring":
+                        cur.execute(
+                            "UPDATE ddc_player SET earring_name = %s, atk_earring = %s, hp_earring = %s, dex_earring = %s, spd_earring = %s WHERE player_id = %s",(eq_reward[1], eq_reward[2], eq_reward[3], eq_reward[4], eq_reward[5], ctx.author.id))
 
                     emoji = "<:angle:1412540828701823007>"
                     result = ["Pass",f"✅ {emoji} you have equipped your new item!"]
