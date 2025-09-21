@@ -1,7 +1,7 @@
 ✅ /create - create new character
 ✅ /daily - daily login - gain actions
 ✅ /profile - preview stats + equipment (can preview other users)
-✅ /top10 - show top10 players
+✅ /top <x> - show top X players
 
 ✅ /levelup <skill> <level> - levels up a skill using experience
 ✅ /skillup <skill> <level> - upgrades skill by 1%
