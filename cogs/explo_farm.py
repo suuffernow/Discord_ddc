@@ -99,6 +99,7 @@ class farm(commands.Cog):
                 print(f"{ctx.author.name} - explore - remove 1 action from the user")
                 cur.execute("UPDATE ddc_player SET action = %s WHERE player_id= %s",[player_stats[3] - times, ctx.author.id])
                 total_xp = 0
+                new_exp = player_stats[5]
                 for i in range(times):
                     await asyncio.sleep(5)
 
@@ -109,11 +110,10 @@ class farm(commands.Cog):
                         victory = await battle.start_fight(oponent, player, message, message_string, ctx)
 
                     if victory == ctx.author.name:
-                        new_exp = player_stats[5] + level
+                        new_exp +=  level
                         total_xp += level
                         emoji = "<:zrage:1412527734650830908>"
                         print(f"{ctx.author.name} - explore - trash moob kill acknowledged")
-                        cur.execute("UPDATE ddc_player SET exp = {} WHERE player_id= {}".format(new_exp,ctx.author.id))
                         message_string2 += f"\n✅{i+1:} {emoji} exploration successful!"
                         await asyncio.sleep(5)
                         await messageSend.postMessage(ctx, message_string2, "Combat2", message)
@@ -122,12 +122,13 @@ class farm(commands.Cog):
                     else:
                         emoji = "<:zlowenergy:1412527768540811325>"
                         emoji2 = "<:zimfine:1412527823884648561>"
-                        message_string2 += f"❌{i + 1:} {emoji}{emoji2} exploration failed!"
+                        message_string2 += f"\n❌{i + 1:} {emoji}{emoji2} exploration failed!"
                         await asyncio.sleep(5)
                         await messageSend.postMessage(ctx, message_string2, "Combat2", message)
                         result = ["Pass", "", oponent_name]
                     await explor_history(ctx, level, result)
                     i += 1
+                cur.execute("UPDATE ddc_player SET exp = {} WHERE player_id= {}".format(new_exp, ctx.author.id))
         return "Pass", f"Completed {times} fights on level {level}. Total xp received: {total_xp}"
 
 
