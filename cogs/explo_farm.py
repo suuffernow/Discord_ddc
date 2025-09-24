@@ -77,17 +77,6 @@ class farm(commands.Cog):
                 oponent_dex = oponent_stats[4]
                 oponent_spd = oponent_stats[5]
 
-                # randomize enemy name
-                cur.execute("SELECT type, name FROM enemy_names WHERE boss IS NULL")
-                oponent_name = random.choice(cur.fetchall())
-                oponent_name = oponent_name[0] + " - " + oponent_name[1]
-                print(f"{ctx.author.name} - explore - trash moob name defined {oponent_name}")
-
-                # set up charatcers and their stats
-                print(f"{ctx.author.name} - explore - create fighter objects for player and opponent")
-                oponent = fighter(oponent_name, oponent_atk, oponent_hp, oponent_dex, player_dex)
-                player = fighter(ctx.author.name, player_atk, player_hp, player_dex, oponent_dex)
-
                 print(f"{ctx.author.name} - explore - start a fight")
                 battle = combat()
                 emoji = "<:shark:1412540848922427452>"
@@ -101,6 +90,16 @@ class farm(commands.Cog):
                 total_xp = 0
                 new_exp = player_stats[5]
                 for i in range(times):
+                    # randomize enemy name
+                    cur.execute("SELECT type, name FROM enemy_names WHERE boss IS NULL")
+                    oponent_name = random.choice(cur.fetchall())
+                    oponent_name = oponent_name[0] + " - " + oponent_name[1]
+                    print(f"{ctx.author.name} - explore - trash moob name defined {oponent_name}")
+
+                    # set up charatcers and their stats
+                    print(f"{ctx.author.name} - explore - create fighter objects for player and opponent")
+                    oponent = fighter(oponent_name, oponent_atk, oponent_hp, oponent_dex, player_dex)
+                    player = fighter(ctx.author.name, player_atk, player_hp, player_dex, oponent_dex)
                     await asyncio.sleep(5)
 
                     FS = random.randint(1, 1000) + player_spd - oponent_spd

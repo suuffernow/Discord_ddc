@@ -61,10 +61,10 @@ async def getdata(player_id, player):
                 statsEQ = t2a(
                     body=[
                         ["", "Weapon", "Earring", "Armor"],
-                        ["ATK", f"+ {stats[20]}%", f"+ %",f"+ {stats[25]}%"],
-                        ["HP", f"+ {stats[21]}%", f"+ %",f"+ {stats[26]}%"],
-                        ["DEX", f"+ {stats[22]}%", f"+ %",f"+ {stats[27]}%"],
-                        ["SPD", f"+ {stats[23]}%", f"+ %",f"+ {stats[28]}%"],
+                        ["ATK", f"+ {stats[20]}%", f"+ {stats[45]}%",f"+ {stats[25]}%"],
+                        ["HP", f"+ {stats[21]}%", f"+ {stats[46]}%",f"+ {stats[26]}%"],
+                        ["DEX", f"+ {stats[22]}%", f"+ {stats[47]}%",f"+ {stats[27]}%"],
+                        ["SPD", f"+ {stats[23]}%", f"+ {stats[48]}%",f"+ {stats[28]}%"],
                         ["", Merge.LEFT, Merge.LEFT, Merge.LEFT],
                         ["", "Pants", "Gloves", "Boots"],
                         ["ATK", f"+ {stats[30]}%", f"+ {stats[35]}%", f"+ {stats[40]}%"],
